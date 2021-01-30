@@ -5,15 +5,15 @@ set(groot, 'defaultAxesTickLabelInterpreter','latex');
 set(groot, 'defaultLegendInterpreter','latex');
 
 %% System Parameters
-Cylinder.X = 2.5 * 25.4; % X-Coord Master Cylinder Bearing Pivot Pickup [mm]
-Cylinder.Z = 0.3125 * 25.4; % Z-Coord Master Cylinder Bearing Pivot Pickup [mm] 
+Cylinder.X = 2.25 * 25.4; % X-Coord Master Cylinder Bearing Pivot Pickup [mm]
+Cylinder.Z = 0 * 25.4; % Z-Coord Master Cylinder Bearing Pivot Pickup [mm] 
 
-Cylinder.Angle = 70; % Initial Master Cylinder Angle with Horizontal [deg]
+Cylinder.Angle = 69.9880839; % Initial Master Cylinder Angle with Horizontal [deg]
 
 Cylinder.Length = 155.65 + 11; %Initial Length of Master Cylinder [mm]
 Cylinder.Length(2) = Cylinder.Length - 15; %Final Length of Master Cylinder (Initial - Stroke) [mm] 
 
-Pedal.Length = 8 * 25.4; % Pedal Length Between Pivot & Pedal Face [mm] 
+Pedal.Length = 9 * 25.4; % Pedal Length Between Pivot & Pedal Face [mm] 
 Pedal.Angle = 90; % Initial pedal angle from -x axis [degrees]
 
 %% Solving for MC Pickup Lengths and Pedal Offset Length [L_pp, L_po]
@@ -37,7 +37,7 @@ Pedal.Angle(2) = 180 - ( atan2d( (Cylinder.Z + Cylinder.Length(2)*sind(180 - Cyl
     atand( Pedal.Offset ./ Pedal.Lever ) ); % Final Pedal Displacement [deg]
 
 %% Sweeping Through Pedal Travel
-Pedal.Angle = Pedal.Angle(1)-10 : 0.1 : Pedal.Angle(2); % All Movement Based Values Now Linspaced Instead of Limits
+Pedal.Angle = Pedal.Angle(1) : 0.1 : Pedal.Angle(2); % All Movement Based Values Now Linspaced Instead of Limits
 
 BalanceBar.Position = [(Pedal.Lever.*cosd(180 - Pedal.Angle) + Pedal.Offset.*cosd(Pedal.Angle - 90)); ...
     Pedal.Lever*sind(180 - Pedal.Angle) - Pedal.Offset*sind(Pedal.Angle - 90)]; 
@@ -150,7 +150,7 @@ ylabel( 'Pedal Ratio, [ ]' )
 
 figure
 
-plot( Pedal.Angle, Cylinder.Reactions(1,:), 'b-' )
+plot( Pedal.Angle, -Cylinder.Reactions(1,:), 'b-' )
 hold on
 plot( Pedal.Angle, Cylinder.Reactions(2,:), 'b--' )
 plot( Pedal.Angle, Pedal.Reactions(1,:), 'r-' )
