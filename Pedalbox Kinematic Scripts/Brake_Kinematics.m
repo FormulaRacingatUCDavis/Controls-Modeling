@@ -11,7 +11,7 @@ Cylinder.Z = 0 * 25.4; % Z-Coord Master Cylinder Bearing Pivot Pickup [mm]
 Cylinder.Angle = 69.9880839; % Initial Master Cylinder Angle with Horizontal [deg]
 
 Cylinder.Length = 155.65 + 11; %Initial Length of Master Cylinder [mm]
-Cylinder.Length(2) = Cylinder.Length - 15; %Final Length of Master Cylinder (Initial - Stroke) [mm] 
+Cylinder.Length(2) = Cylinder.Length - 30; %Final Length of Master Cylinder (Initial - Stroke) [mm] 
 
 Pedal.Length = 9 * 25.4; % Pedal Length Between Pivot & Pedal Face [mm] 
 Pedal.Angle = 90; % Initial pedal angle from -x axis [degrees]
