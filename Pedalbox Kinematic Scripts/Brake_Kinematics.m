@@ -5,10 +5,10 @@ set(groot, 'defaultAxesTickLabelInterpreter','latex');
 set(groot, 'defaultLegendInterpreter','latex');
 
 %% System Parameters
-Cylinder.X = 2.25 * 25.4; % X-Coord Master Cylinder Bearing Pivot Pickup [mm]
-Cylinder.Z = 0 * 25.4; % Z-Coord Master Cylinder Bearing Pivot Pickup [mm] 
+Cylinder.X = 1.575 * 25.4; % X-Coord Master Cylinder Bearing Pivot Pickup [mm]
+Cylinder.Z = 0.1 * 25.4; % Z-Coord Master Cylinder Bearing Pivot Pickup [mm] 
 
-Cylinder.Angle = 69.9880839; % Initial Master Cylinder Angle with Horizontal [deg]
+Cylinder.Angle = 79.8; % Initial Master Cylinder Angle with Horizontal [deg]
 
 Cylinder.Length = 155.65 + 11; %Initial Length of Master Cylinder [mm]
 Cylinder.Length(2) = Cylinder.Length - 30; %Final Length of Master Cylinder (Initial - Stroke) [mm] 
@@ -141,10 +141,10 @@ subplot( 2, 1, 2 )
 plot(Pedal.Angle, Post.PedalRatio)
 
 hold on
-plot( Pedal.Angle([1 end]), 4.1.*ones(2,1), 'k-.' )
-plot( Pedal.Angle([1 end]), 4.3.*ones(2,1), 'k-.' )
+plot( Pedal.Angle([1 end]), 5.5.*ones(2,1), 'k-.' )
+plot( Pedal.Angle([1 end]), 5.9.*ones(2,1), 'k-.' )
 
-ylim( [0 4.5] )
+ylim( [3 6.5] )
 xlabel( 'Pedal Angle, $\theta_{p}$ [$deg$]' )
 ylabel( 'Pedal Ratio, [ ]' )
 
