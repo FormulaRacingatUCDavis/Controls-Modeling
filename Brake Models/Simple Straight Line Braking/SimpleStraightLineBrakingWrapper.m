@@ -6,9 +6,9 @@ clc; clear; close all;
 Input.Fp = 100:100:1000; % Pedal Force [N]
 
 %% Parameters
-Parameter.Mass.m  = 274;          % Mass [kg]
-Parameter.Mass.h  = 10 .* 0.0254; % C.G. Height [in -> m]
-Parameter.Mass.pf = .5;           % Percent Front Weight Distribution [ ]
+Parameter.Mass.m  = 265;          % Mass [kg]
+Parameter.Mass.h  = 206.18./1000; % C.G. Height [mm -> m]
+Parameter.Mass.pf = .48;           % Percent Front Weight Distribution [ ]
 
 Parameter.Susp.L = 1.525; % Wheelbase [m]
 
@@ -27,12 +27,12 @@ Tire.Pacejka.L.mu.x = 2/3;
 Parameter.Pacejka.L.mu.x = 2/3;
 
 %% Tire Calcs
-Fidelity = struct( 'Pure', 'Pacejka', 'Combined', 'Pure' );
+Fidelity = struct( 'Pure', 'Pacejka', 'Combined', 'MNC' );
 
 Fz0 = Parameter.Mass.m * 9.81/4; % Nominal Normal Load [N]
 
-Kxk = ( Tire.ContactPatchLoads( 0, 0.01, Fz0, 80, 0, 10, 1, Fidelity ) - ...
-        Tire.ContactPatchLoads( 0, 0.00, Fz0, 80, 0, 10, 1, Fidelity ) ) ./ 0.01;
+Kxk = ( ContactPatchLoads( 0, 0.01, Fz0, 80, 0, 10, 1, Fidelity ) - ...
+        ContactPatchLoads( 0, 0.00, Fz0, 80, 0, 10, 1, Fidelity ) ) ./ 0.01;
     % Slip Stiffness [N/[]]
     
 Parameter.Re = Tire.Radius.Effective( Fz0, 80 ) ./ 1000; % Nominal Effective Radius [m]

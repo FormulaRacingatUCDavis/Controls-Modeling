@@ -5,11 +5,11 @@ set(groot, 'defaultAxesTickLabelInterpreter','latex');
 set(groot, 'defaultLegendInterpreter','latex');
 
 %% System Parameters
-Pedal.Length = 3.77092954;
+Pedal.Length = 3.77092937;
 Pedal.Offset = 0.5;
 
-Sensor.X = 68/25.4;
-Sensor.Z = 15.125/25.4;
+Sensor.X = 2;
+Sensor.Z = 0.94;
 Sensor.Arm = 0.75;
 Sensor.Offset=90;
 
