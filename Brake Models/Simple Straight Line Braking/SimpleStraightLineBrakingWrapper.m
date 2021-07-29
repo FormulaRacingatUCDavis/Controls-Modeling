@@ -29,10 +29,10 @@ Parameter.Pacejka.L.mu.x = 2/3;
 %% Tire Calcs
 Fidelity = struct( 'Pure', 'Pacejka', 'Combined', 'MNC' );
 
-Fz0 = Parameter.Mass.m * 9.81/4; % Nominal Normal Load [N]
+Fz0 = Parameter.Mass.m  * 9.81/4; % Nominal Normal Load [N]
 
-Kxk = ( ContactPatchLoads( Parameter.Pacejka, 0, 0.01, Fz0, 80, 0, 10, 1, Fidelity ) - ...
-        ContactPatchLoads( Parameter.Pacejka, 0, 0.00, Fz0, 80, 0, 10, 1, Fidelity ) ) ./ 0.01;
+Kxk = ( ContactPatchLoads( Parameter.Pacejka, 0, 0.01, (Parameter.Mass.m .* 9.81 ./ 4) , 80, 0, 10, 1, Fidelity ) - ...
+        ContactPatchLoads( Parameter.Pacejka, 0, 0.00, (Parameter.Mass.m .* 9.81 ./ 4) , 80, 0, 10, 1, Fidelity ) ) ./ 0.01;
     % Slip Stiffness [N/[]]
     
 Parameter.Re = Tire.Radius.Effective( Fz0, 80 ) ./ 1000; % Nominal Effective Radius [m]
