@@ -1,4 +1,4 @@
-%clc; clear; close all;
+clc; clear; close all;
 
 %% Simple Braking & Traction Model
 
@@ -22,7 +22,7 @@ Parameter.Brake.Rr = 3.3 * 0.0254;           % Rotor Radius [in -> m]
 Parameter.Pedal.eta = 5.7 ; % Pedal Ratio [ ]
 Parameter.Pedal.pbb = .5;  % Balance Bar Setting [ ]
 
-%load('Hoosier_R25B_16x75-10x7.mat'); 
+load('Hoosier_R25B_16x75-10x7.mat'); 
 Parameter.Pacejka = Tire.Pacejka;
 Tire.Pacejka.L.mu.x = 2/3;
 Parameter.Pacejka.L.mu.x = 2/3;
