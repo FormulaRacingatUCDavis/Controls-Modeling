@@ -1,4 +1,4 @@
-clc; clear; close all;
+%clc; clear; close all;
 
 %% Simple Braking & Traction Model
 
@@ -22,7 +22,8 @@ Parameter.Brake.Rr = 3.3 * 0.0254;           % Rotor Radius [in -> m]
 Parameter.Pedal.eta = 5.7 ; % Pedal Ratio [ ]
 Parameter.Pedal.pbb = .5;  % Balance Bar Setting [ ]
 
-load('Hoosier_R25B_16x75-10x7.mat'); Parameter.Pacejka = Tire.Pacejka;
+%load('Hoosier_R25B_16x75-10x7.mat'); 
+Parameter.Pacejka = Tire.Pacejka;
 Tire.Pacejka.L.mu.x = 2/3;
 Parameter.Pacejka.L.mu.x = 2/3;
 
@@ -31,11 +32,11 @@ Fidelity = struct( 'Pure', 'Pacejka', 'Combined', 'MNC' );
 
 Fz0 = Parameter.Mass.m  * 9.81/4; % Nominal Normal Load [N]
 
-Kxk = ( ContactPatchLoads( Parameter.Pacejka, 0, 0.01, (Parameter.Mass.m .* 9.81 ./ 4) , 80, 0, 10, 1, Fidelity ) - ...
-        ContactPatchLoads( Parameter.Pacejka, 0, 0.00, (Parameter.Mass.m .* 9.81 ./ 4) , 80, 0, 10, 1, Fidelity ) ) ./ 0.01;
+Kxk = ( ContactPatchLoads( Tire, 0, 0.01, (Parameter.Mass.m .* 9.81 ./ 4) , 80, 0, 10, 1, Fidelity ) - ...
+        ContactPatchLoads( Tire, 0, 0.00, (Parameter.Mass.m .* 9.81 ./ 4) , 80, 0, 10, 1, Fidelity ) ) ./ 0.01;
     % Slip Stiffness [N/[]]
     
-Parameter.Re = Tire.Radius.Effective( Fz0, 80 ) ./ 1000; % Nominal Effective Radius [m]
+Parameter.Re = Tire.Radius.Effective( Fz0, 80, 12 ) ./ 1000; % Nominal Effective Radius [m]
 
 %% Initialization
 x0(1) = 30; % Initial Speed [m/s]
@@ -53,11 +54,11 @@ figure
 subplot(5,1,1)
 for i = 1:numel(Input.Fp)
     scatter( Out(i).yout{7}.Values.Data(:,1), Out(i).yout{8}.Values.Data(:,1), 'b.' ); hold on;
-    plot( -1:0.005:0, Tire.ContactPatchLoads( 0, -1:0.005:0, ...
+    plot( -1:0.005:0, ContactPatchLoads( Tire, 0, -1:0.005:0, ...
         Out(i).yout{9}.Values.Data(end,1), 80, 0, 10, 1, Fidelity ), 'b' );
 
     scatter( Out(i).yout{7}.Values.Data(:,2), Out(i).yout{8}.Values.Data(:,2), 'r.' );
-    plot( -1:0.005:0, Tire.ContactPatchLoads( 0, -1:0.005:0, ...
+    plot( -1:0.005:0, ContactPatchLoads( Tire, 0, -1:0.005:0, ...
         Out(i).yout{9}.Values.Data(end,2), 80, 0, 10, 1, Fidelity ), 'r' );
 end
 
