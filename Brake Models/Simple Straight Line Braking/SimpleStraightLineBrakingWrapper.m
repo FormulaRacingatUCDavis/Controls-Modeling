@@ -6,9 +6,9 @@ clc; clear; close all;
 Input.Fp = 100:100:1000; % Pedal Force [N]
 
 %% Parameters
-Parameter.Mass.m  = 270;          % Mass [kg]
-Parameter.Mass.h  = 206.18./1000; % C.G. Height [mm -> m]
-Parameter.Mass.pf = .48;           % Percent Front Weight Distribution [ ]
+Parameter.Mass.m  = 280;          % Mass [kg]
+Parameter.Mass.h  = 272.32./1000; % C.G. Height [mm -> m]
+Parameter.Mass.pf = .49;           % Percent Front Weight Distribution [ ]
 
 Parameter.Susp.L = 1.525; % Wheelbase [m]
 

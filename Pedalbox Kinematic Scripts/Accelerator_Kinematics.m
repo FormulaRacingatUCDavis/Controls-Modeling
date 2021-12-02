@@ -10,7 +10,7 @@ Pedal.Offset = 0.5;
 
 Sensor.X = 2;
 Sensor.Z = 0.94;
-Sensor.Arm = 0.75;
+Sensor.Arm = 0.8;
 Sensor.Offset=90;
 
 Linkage.Length = norm([Pedal.Offset,Pedal.Length]-...
