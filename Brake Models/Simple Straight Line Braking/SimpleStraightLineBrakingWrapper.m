@@ -14,7 +14,7 @@ Parameter.Susp.L = 1.525; % Wheelbase [m]
 
 Parameter.Wheel.J = 0.148; % Wheel Spin Inertia [kg-m^2]
 
-Parameter.Brake.Db = [0.59; 0.8125] .* 0.0254; % Cylinder Bore Diameter [in -> m]
+Parameter.Brake.Db = [0.59; 0.70] .* 0.0254; % Cylinder Bore Diameter [in -> m]
 Parameter.Brake.mu = 0.55;                   % Pad Friction [ ]
 Parameter.Brake.Ap = [2.9; 1.45] * 0.0254^2;        % Brake Pad Area [in^2 -> m^2]
 Parameter.Brake.Rr = 3.3 * 0.0254;           % Rotor Radius [in -> m] 
